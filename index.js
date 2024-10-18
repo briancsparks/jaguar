@@ -1,15 +1,17 @@
 import Anthropic from "@anthropic-ai/sdk";
-import fs from 'fs/promises';
-import { safeJSONParse } from './src/util.js';
+import { safeJSONLoad } from './src/util.js';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY
 });
 
 async function main() {
-  // Read the message configuration from the JSON file
-  const configFile = await fs.readFile('message_config.json', 'utf8');
-  const config = safeJSONParse(configFile);
+  // Read and parse the message configuration from the JSON file
+  const config = await safeJSONLoad('message_config.json');
+  
+  if (!config) {
+    throw new Error('Failed to load or parse message_config.json');
+  }
 
   // Add streaming option to the configuration
   config.stream = true;
