@@ -47,11 +47,11 @@ async function main() {
     });
 
     let assistantResponse = "";
-    process.stdout.write(chalk.cyan("Assistant: "));
+    process.stdout.write(chalk.blue("Assistant: "));
 
     for await (const chunk of stream) {
       if (chunk.type === 'content_block_delta') {
-        process.stdout.write(chalk.cyan(chunk.delta.text));
+        process.stdout.write(chalk.blue(chunk.delta.text));
         assistantResponse += chunk.delta.text;
       }
     }
