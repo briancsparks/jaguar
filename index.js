@@ -30,9 +30,9 @@ async function main() {
   let messages = config.messages || [];
 
   while (true) {
-    const userMessage = await promptUser("Enter your message (or 'exit' to quit): ");
+    const userMessage = await promptUser("> ");
     
-    if (userMessage.toLowerCase() === 'exit') {
+    if (['exit', 'q', 'quit'].includes(userMessage.toLowerCase())) {
       break;
     }
 
