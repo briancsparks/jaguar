@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { safeJSONLoad } from './src/util.js';
 import readline from 'readline';
+import chalk from 'chalk';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY
@@ -46,16 +47,16 @@ async function main() {
     });
 
     let assistantResponse = "";
-    process.stdout.write("Assistant: ");
+    process.stdout.write(chalk.cyan("Assistant: "));
 
     for await (const chunk of stream) {
       if (chunk.type === 'content_block_delta') {
-        process.stdout.write(chunk.delta.text);
+        process.stdout.write(chalk.cyan(chunk.delta.text));
         assistantResponse += chunk.delta.text;
       }
     }
 
-    console.log("\n");
+    console.log(chalk.reset("\n"));
     messages.push({ role: "assistant", content: assistantResponse });
   }
 
