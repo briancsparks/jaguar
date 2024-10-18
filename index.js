@@ -14,19 +14,15 @@ async function main() {
   // Add streaming option to the configuration
   config.stream = true;
 
-  try {
-    // Create the message stream using the configuration from the JSON file
-    const stream = await anthropic.messages.create(config);
+  // Create the message stream using the configuration from the JSON file
+  const stream = await anthropic.messages.create(config);
 
-    // Iterate over the stream
-    for await (const chunk of stream) {
-      if (chunk.type === 'content_block_delta') {
-        process.stdout.write(chunk.delta.text);
-      }
+  // Iterate over the stream
+  for await (const chunk of stream) {
+    if (chunk.type === 'content_block_delta') {
+      process.stdout.write(chunk.delta.text);
     }
-  } catch (error) {
-    console.error('An error occurred during streaming:', error);
   }
 }
 
-main();
+main().catch(error => console.error('An error occurred:', error));
