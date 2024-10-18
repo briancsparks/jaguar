@@ -57,6 +57,8 @@ async function main() {
     }
 
     console.log(chalk.reset("\n"));
+    // console.log(chalk.green(JSON.stringify({ role: "assistant", content: assistantResponse }, null, 2)));
+
     messages.push({ role: "assistant", content: assistantResponse });
   }
 
