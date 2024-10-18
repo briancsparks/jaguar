@@ -1,15 +1,20 @@
 import Anthropic from "@anthropic-ai/sdk";
+import fs from 'fs/promises';
+import { safeJSONParse } from './src/util.js';
 
 const anthropic = new Anthropic({
-    apiKey: process.env.ANTHROPIC_API_KEY
+  apiKey: process.env.ANTHROPIC_API_KEY
 });
 
-const msg = await anthropic.messages.create({
-    model: "claude-3-5-sonnet-20240620",
-    max_tokens: 1024,
-    messages: [{role: "user", content: "Why is the sky blue?"}]
-});
+async function main() {
+  // Read the message configuration from the JSON file
+  const configFile = await fs.readFile('message_config.json', 'utf8');
+  const config = safeJSONParse(configFile);
 
-console.log(msg);
+  // Create the message using the configuration from the JSON file
+  const msg = await anthropic.messages.create(config);
 
+  console.log(msg);
+}
 
+main().catch(error => console.error('An error occurred:', error));
