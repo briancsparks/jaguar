@@ -1,9 +1,23 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { safeJSONLoad } from './src/util.js';
+import readline from 'readline';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY
 });
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+function promptUser(question) {
+  return new Promise((resolve) => {
+    rl.question(question, (answer) => {
+      resolve(answer);
+    });
+  });
+}
 
 async function main() {
   // Read and parse the message configuration from the JSON file
@@ -13,18 +27,39 @@ async function main() {
     throw new Error('Failed to load or parse message_config.json');
   }
 
-  // Add streaming option to the configuration
-  config.stream = true;
+  let messages = config.messages || [];
 
-  // Create the message stream using the configuration from the JSON file
-  const stream = await anthropic.messages.create(config);
-
-  // Iterate over the stream
-  for await (const chunk of stream) {
-    if (chunk.type === 'content_block_delta') {
-      process.stdout.write(chunk.delta.text);
+  while (true) {
+    const userMessage = await promptUser("Enter your message (or 'exit' to quit): ");
+    
+    if (userMessage.toLowerCase() === 'exit') {
+      break;
     }
+
+    messages.push({ role: "user", content: userMessage });
+
+    const stream = await anthropic.messages.create({
+      model: config.model,
+      max_tokens: config.max_tokens,
+      messages: messages,
+      stream: true,
+    });
+
+    let assistantResponse = "";
+    process.stdout.write("Assistant: ");
+
+    for await (const chunk of stream) {
+      if (chunk.type === 'content_block_delta') {
+        process.stdout.write(chunk.delta.text);
+        assistantResponse += chunk.delta.text;
+      }
+    }
+
+    console.log("\n");
+    messages.push({ role: "assistant", content: assistantResponse });
   }
+
+  rl.close();
 }
 
 main().catch(error => console.error('An error occurred:', error));
