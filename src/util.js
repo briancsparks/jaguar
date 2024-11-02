@@ -1,4 +1,6 @@
 import fs from 'fs/promises';
+import * as util from "node:util";
+
 
 export function safeJSONParse(jsonString) {
   try {
@@ -17,4 +19,12 @@ export async function safeJSONLoad(filename) {
     console.error(`Error reading or parsing file ${filename}:`, error);
     return undefined;
   }
+}
+
+export function logFull(obj) {
+  console.log(util.inspect(obj, {
+    depth: null,
+    colors: true,
+    maxArrayLength: null
+  }));
 }
