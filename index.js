@@ -1,6 +1,6 @@
-import {one} from "./src/one.js";
+import {the} from "./src/the.js";
 
-one.two = "Buckle my shoe";
+the.two = "Buckle my shoe";
 
 import {buildChatJson} from "./src/build-chat-json.js";
 import {repl} from "./src/repl.js";

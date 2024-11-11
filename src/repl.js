@@ -1,9 +1,20 @@
-import {one} from "./one.js";
+import {the} from "./the.js";
+
+const chat0 = {
+  model: "claude-3-5-sonnet-20241022",
+  max_tokens: 2048,
+  messages: []
+};
+
+the.currChat = {
+  system: null,
+  messages: []
+};
 
 import readline from 'readline';
-import {buildChatJson} from "./build-chat-json.js";
 import {postMessages} from "./post-messages.js";
 import {logFull} from "./util.js";
+import {systemPrompt} from "./prompts";
 
 /**
  * The readline interface for reading data from the standard input.
@@ -49,6 +60,7 @@ function promptUser(question) {
  * @return {Promise<void>} A promise that resolves when the REPL loop is terminated and resources are cleaned up.
  */
 export async function repl() {
+
   while (true) {
     const userMessage = await promptUser("> ");
 
@@ -56,17 +68,57 @@ export async function repl() {
       break;
     }
 
-    const chat = await buildChatJson({userMessage});
+    const chat = await buildChatJson(userMessage);
     const response = await postMessages(chat);
     // console.log(response);
 
     if (response) {
-      one.theChat.messages.push({
+      the.currChat.messages.push({
         role: "assistant",
         content: response
       });
     }
   }
 
-  rl.close();
+  return rl.close();
+
+  // ---------------------------------------------------------------------------------
+
+  /**
+   * Constructs a chat JSON object by combining a predefined chat template with user messages.
+   *
+   * More specifically, takes the `the.currChat` object, which holds the data for the current
+   * chat (but is in a more friendly "keyed" format - not a bunch of arrays), and takes the
+   * input `userMessage` and outputs the right object to send to the AI's JSON API.
+   *
+   * @param {string} userMessage - The message provided by the user to be added to the chat.
+   * @return {Object} The constructed chat object with the updated messages.
+   */
+  async function buildChatJson(userMessage) {
+    const curr = the.currChat;
+
+    // TODO: you have userMessage, and the current state of the chat (in 'ideal' format) - allow photons
+
+    curr.messages.push({
+      role: "user",
+      content: userMessage
+    });
+
+    // TODO: you have userMessage, and the current state of the chat (in 'ideal' format) - allow photons
+
+    let chat = {...chat0};
+
+    // System prompt?
+    if (curr.system) {
+      chat.messages.push({
+        role: "system",
+        content: curr.system
+      });
+    }
+
+    chat.messages = [...chat.messages, ...curr.messages];
+
+    return chat;
+  }
 }
+

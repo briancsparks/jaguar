@@ -1,44 +1,45 @@
-import {one} from "./one.js";
+// import {the} from "./the.js";
 
-const chat0 = {
-  model: "claude-3-5-sonnet-20241022",
-  max_tokens: 2048,
-  messages: []
-};
+// the.theChat = {
+//   model: "claude-3-5-sonnet-20241022",
+//   max_tokens: 2048,
+//   messages: []
+// };
 
-one.theChat = chat0;
+// import developerPrompt from "./prompts/system/developer.js";
 
 
-export async function buildChatJson(input) {
-  let chat = {...one.theChat};
-
-  const {userMessage, assistantMessage, systemMessage, ...rest} = input;
-
-  if (userMessage) {
-    chat.messages.push({
-      role: "user",
-      content: userMessage
-    });
-  }
-
-  if (assistantMessage) {
-    chat.messages.push({
-      role: "assistant",
-      content: assistantMessage
-    });
-  }
-
-  if (systemMessage) {
-    chat.messages.push({
-      role: "system",
-      content: systemMessage
-    });
-  }
-
-  one.theChat = chat;
-
-  return chat;
-}
+// export async function buildChatJson(input) {
+//   let chat = {...the.theChat};
+//
+//   const {userMessage, assistantMessage, ...rest} = input;
+//   let systemMessage = developerPrompt();
+//
+//   if (systemMessage) {
+//     chat.messages.push({
+//       role: "system",
+//       content: systemMessage
+//     });
+//   }
+//
+//   if (assistantMessage) {
+//     chat.messages.push({
+//       role: "assistant",
+//       content: assistantMessage
+//     });
+//   }
+//
+//   if (userMessage) {
+//     chat.messages.push({
+//       role: "user",
+//       content: userMessage
+//     });
+//   }
+//
+//   the.theChat = chat;
+//
+//   return chat;
+// }
 
 
 

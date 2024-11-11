@@ -1,5 +1,0 @@
-
-
-let one = {};
-
-export {one};
