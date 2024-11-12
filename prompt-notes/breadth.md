@@ -25,6 +25,3 @@ When comparing:
   - To get started, to maintain long-term
 - How powerful is the suggestion? (ease vs payback)
 - How popular (and supported) the tech for the suggestion is.
-
-
-
