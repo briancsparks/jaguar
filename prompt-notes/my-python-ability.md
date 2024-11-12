@@ -10,3 +10,5 @@ I prefer uv.
 I need a lot of hand-holding with:
 - full-featured Python apps (coding them) - the whole setup.py thing and python modules and all that.
 - Delivering any of my Python work to others - who never have their system setup to run anything but vanilla Python.
+
+But I am a professional developer with 30+ years experience in the industry, mostly C/C++ and JS.
