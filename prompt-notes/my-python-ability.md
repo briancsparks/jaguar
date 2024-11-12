@@ -12,3 +12,5 @@ I need a lot of hand-holding with:
 - Delivering any of my Python work to others - who never have their system setup to run anything but vanilla Python.
 
 But I am a professional developer with 30+ years experience in the industry, mostly C/C++ and JS.
+
+And don't do any of that `typing` nonsense. Python is a dynamic language, let's lean into it, and avoid all that typing gymnastics.
