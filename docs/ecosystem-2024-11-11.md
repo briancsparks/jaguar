@@ -2,20 +2,9 @@
 
 TBD:
 
-- Cofounder - generate apps
-- Supermaven
-- Shadcn
-- StreamLit
-- LM Studio
-- Hugging Face
-- Open WebUI
-- oobabooga
-- LocalAI
-- FastChat
-- Gradio
+- FastChat?
 - LangChain UI
-- LlamaIndex UI
-- LlamaIndex
+- LlamaIndex UI / LlamaCloud
 
 Items:
 - Frontier Models
@@ -23,9 +12,12 @@ Items:
     - Claude Sonnet 3.5 "new" (I would have called it 3.6)
     - Claude haiku small 3.5
   - OpenAI, Google, etc.
-- Models
+  - Supermaven - fast auto-complete
+- Model Management
   - ollama:
     - llama3.2
+  - LM Studio
+  - Hugging Face
 - Editors
   - Cursor
   - REPLit
@@ -34,6 +26,7 @@ Items:
   - LangGraph
   - Crews
   - Roll your own
+  - LlamaIndex
   - Jaguar
 - Non-Transformer Stuff
   - Embeddings
@@ -48,8 +41,14 @@ Items:
   - Cline?
 - Web
   - Chat UIs
+  - Shadcn
+  - StreamLit
+  - Open WebUI
+  - Gradio
+  - oobabooga
 - Generators
   - v0
   - bolt.new
   - replit
+  - Cofounder
 
