@@ -3,6 +3,9 @@
 TBD:
 
 - Cofounder - generate apps
+- Supermaven
+- Shadcn
+- StreamLit
 
 Items:
 - Frontier Models
