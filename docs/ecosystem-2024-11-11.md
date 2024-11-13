@@ -1,5 +1,10 @@
 # The AI Ecosystem as of Nov, 2024
 
+TBD:
+
+- Cofounder
+
+Items:
 - Frontier Models
   - Anthropic's models are the best for coding, and have been for a couple of months.
     - Claude Sonnet 3.5 "new" (I would have called it 3.6)
@@ -32,6 +37,6 @@
   - Chat UIs
 - Generators
   - v0
-  - ???.new
+  - bolt.new
   - replit
 
