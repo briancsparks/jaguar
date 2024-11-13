@@ -6,6 +6,8 @@ TBD:
 - Supermaven
 - Shadcn
 - StreamLit
+- LM Studio
+- Hugging Face
 
 Items:
 - Frontier Models
