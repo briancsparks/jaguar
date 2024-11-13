@@ -8,6 +8,7 @@ TBD:
 - StreamLit
 - LM Studio
 - Hugging Face
+- Open WebUI
 
 Items:
 - Frontier Models
