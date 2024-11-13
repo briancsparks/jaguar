@@ -9,6 +9,13 @@ TBD:
 - LM Studio
 - Hugging Face
 - Open WebUI
+- oobabooga
+- LocalAI
+- FastChat
+- Gradio
+- LangChain UI
+- LlamaIndex UI
+- LlamaIndex
 
 Items:
 - Frontier Models
