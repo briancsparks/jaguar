@@ -2,7 +2,7 @@
 
 TBD:
 
-- Cofounder
+- Cofounder - generate apps
 
 Items:
 - Frontier Models
