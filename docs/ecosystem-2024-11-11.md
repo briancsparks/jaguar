@@ -8,6 +8,7 @@ TBD:
 - cursor
 - codium
   - Windsurf
+- Zed
 
 Items:
 - Frontier Models
