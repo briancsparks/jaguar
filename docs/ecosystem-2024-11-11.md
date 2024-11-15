@@ -5,6 +5,9 @@ TBD:
 - FastChat?
 - LangChain UI
 - LlamaIndex UI / LlamaCloud
+- cursor
+- codium
+  - Windsurf
 
 Items:
 - Frontier Models
