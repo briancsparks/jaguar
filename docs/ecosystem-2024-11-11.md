@@ -9,6 +9,9 @@ TBD:
 - codium
   - Windsurf
 - Zed
+- https://www.val.town/v/stevekrouse/cerebras_coder
+- If GitHub Gists could run
+  - https://www.val.town/
 
 Items:
 - Frontier Models
