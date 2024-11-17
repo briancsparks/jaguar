@@ -12,6 +12,8 @@ TBD:
 - https://www.val.town/v/stevekrouse/cerebras_coder
 - If GitHub Gists could run
   - https://www.val.town/
+- Townie
+  - https://www.val.town/townie/signup?next=%2Ftownie
 
 Items:
 - Frontier Models
